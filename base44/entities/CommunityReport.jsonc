@@ -1,0 +1,140 @@
+{
+  "name": "CommunityReport",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "hazard_type": {
+      "type": "string",
+      "enum": [
+        "flood",
+        "stagnation",
+        "damaged_road",
+        "closure",
+        "cyclone",
+        "tsunami",
+        "earthquake",
+        "landslide",
+        "fire",
+        "industrial",
+        "debris",
+        "other"
+      ]
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "caution",
+        "elevated",
+        "severe"
+      ],
+      "default": "caution"
+    },
+    "description": {
+      "type": "string"
+    },
+    "district": {
+      "type": "string"
+    },
+    "landmark": {
+      "type": "string"
+    },
+    "lat": {
+      "type": "number"
+    },
+    "lng": {
+      "type": "number"
+    },
+    "position_accuracy_m": {
+      "type": "number"
+    },
+    "observed_at": {
+      "type": "string"
+    },
+    "photo_uri": {
+      "type": "string"
+    },
+    "photo_uris": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "water_depth_m": {
+      "type": "number"
+    },
+    "road_blocked": {
+      "type": "boolean",
+      "default": false
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "verified",
+        "rejected",
+        "duplicate"
+      ],
+      "default": "pending"
+    },
+    "verified_by_label": {
+      "type": "string"
+    },
+    "verified_at": {
+      "type": "string"
+    },
+    "verification_note": {
+      "type": "string"
+    },
+    "promoted_hazard_id": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "default": "community_report"
+    },
+    "rating": {
+      "type": "number"
+    },
+    "place_name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "hazard_type",
+    "lat",
+    "lng"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "name": "SimulationRun",
+  "type": "object",
+  "properties": {
+    "scenario_key": {
+      "type": "string"
+    },
+    "scenario_label": {
+      "type": "string"
+    },
+    "mode": {
+      "type": "string"
+    },
+    "ground_truth": {
+      "type": "string",
+      "default": "synthetic_ground_truth"
+    },
+    "sample_count": {
+      "type": "number"
+    },
+    "noise_sigma_m": {
+      "type": "number"
+    },
+    "dropout_ratio": {
+      "type": "number"
+    },
+    "drift_m_per_min": {
+      "type": "number"
+    },
+    "methods": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "engine_version": {
+      "type": "string"
+    },
+    "is_demonstration": {
+      "type": "boolean",
+      "default": true
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "scenario_label"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

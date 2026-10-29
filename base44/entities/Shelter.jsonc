@@ -1,0 +1,136 @@
+{
+  "name": "Shelter",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "facility_type": {
+      "type": "string",
+      "enum": [
+        "shelter",
+        "hospital",
+        "relief_centre",
+        "fire_station",
+        "police_station",
+        "ambulance_depot"
+      ],
+      "default": "shelter"
+    },
+    "district": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "lat": {
+      "type": "number"
+    },
+    "lng": {
+      "type": "number"
+    },
+    "capacity": {
+      "type": "number"
+    },
+    "capacity_status": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "available",
+        "near_full",
+        "full"
+      ],
+      "default": "unknown"
+    },
+    "capacity_as_of": {
+      "type": "string"
+    },
+    "facilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "accessible": {
+      "type": "string",
+      "enum": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "default": "unknown"
+    },
+    "pet_friendly": {
+      "type": "string",
+      "enum": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "default": "unknown"
+    },
+    "contact": {
+      "type": "string"
+    },
+    "operator": {
+      "type": "string"
+    },
+    "data_class": {
+      "type": "string",
+      "enum": [
+        "observed",
+        "official",
+        "forecast",
+        "historical",
+        "simulated"
+      ],
+      "default": "simulated"
+    },
+    "source": {
+      "type": "string"
+    },
+    "last_verified": {
+      "type": "string"
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": [
+        "official",
+        "verified",
+        "unverified",
+        "unverified_demonstration"
+      ],
+      "default": "unverified_demonstration"
+    },
+    "is_demonstration": {
+      "type": "boolean",
+      "default": true
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "lat",
+    "lng"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

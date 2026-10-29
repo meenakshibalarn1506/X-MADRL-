@@ -1,0 +1,123 @@
+{
+  "name": "Alert",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "hazard_type": {
+      "type": "string",
+      "enum": [
+        "flood",
+        "stagnation",
+        "damaged_road",
+        "closure",
+        "cyclone",
+        "tsunami",
+        "earthquake",
+        "landslide",
+        "fire",
+        "industrial",
+        "debris",
+        "other"
+      ]
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "caution",
+        "elevated",
+        "severe"
+      ],
+      "default": "caution"
+    },
+    "data_class": {
+      "type": "string",
+      "enum": [
+        "official",
+        "forecast",
+        "observed",
+        "simulated"
+      ],
+      "default": "simulated"
+    },
+    "districts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "issued_at": {
+      "type": "string"
+    },
+    "expires_at": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "source_agency": {
+      "type": "string"
+    },
+    "official_url": {
+      "type": "string"
+    },
+    "action_required": {
+      "type": "string"
+    },
+    "is_official": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_evacuation_order": {
+      "type": "boolean",
+      "default": false
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": [
+        "official",
+        "verified",
+        "unverified",
+        "unverified_demonstration"
+      ],
+      "default": "unverified_demonstration"
+    },
+    "alert_code": {
+      "type": "string"
+    },
+    "is_demonstration": {
+      "type": "boolean",
+      "default": true
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "hazard_type"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

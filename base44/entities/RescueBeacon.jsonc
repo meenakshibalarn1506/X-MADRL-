@@ -1,0 +1,88 @@
+{
+  "name": "RescueBeacon",
+  "type": "object",
+  "properties": {
+    "rescue_id": {
+      "type": "string",
+      "description": "Non-identifying short reference shown to the user and rescue contact."
+    },
+    "position_source": {
+      "type": "string",
+      "enum": [
+        "gps_confirmed",
+        "manual",
+        "last_known"
+      ],
+      "default": "manual"
+    },
+    "lat": {
+      "type": "number"
+    },
+    "lng": {
+      "type": "number"
+    },
+    "accuracy_m": {
+      "type": "number"
+    },
+    "fix_timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "message": {
+      "type": "string",
+      "description": "Short emergency message entered by the user."
+    },
+    "contact_name": {
+      "type": "string"
+    },
+    "contact_phone": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "revoked",
+        "expired"
+      ],
+      "default": "active"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "revoked_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "rescue_id",
+    "position_source",
+    "lat",
+    "lng"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

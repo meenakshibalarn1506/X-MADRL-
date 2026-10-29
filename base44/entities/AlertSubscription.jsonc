@@ -1,0 +1,100 @@
+{
+  "name": "AlertSubscription",
+  "type": "object",
+  "properties": {
+    "districts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "hazard_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "verified_channels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "saved_locations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "lat": {
+            "type": "number"
+          },
+          "lng": {
+            "type": "number"
+          },
+          "radius_km": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "min_severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "caution",
+        "elevated",
+        "severe"
+      ],
+      "default": "caution"
+    },
+    "push_enabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "sms_number": {
+      "type": "string"
+    },
+    "consent_given_at": {
+      "type": "string"
+    },
+    "suppress_duplicates_minutes": {
+      "type": "number",
+      "default": 30
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

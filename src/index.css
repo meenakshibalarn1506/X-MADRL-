@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 218 47% 7%;
+    --foreground: 210 40% 96%;
+    --card: 217 41% 10%;
+    --card-foreground: 210 40% 96%;
+    --popover: 218 44% 9%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 187 92% 52%;
+    --primary-foreground: 218 62% 8%;
+    --secondary: 217 33% 16%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 217 30% 15%;
+    --muted-foreground: 214 20% 70%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 218 62% 8%;
+    --destructive: 0 78% 56%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 32% 22%;
+    --input: 215 32% 20%;
+    --ring: 187 92% 52%;
+    --radius: 0.75rem;
+
+    --risk-low: 152 68% 44%;
+    --risk-caution: 45 93% 56%;
+    --risk-elevated: 27 92% 55%;
+    --risk-severe: 0 82% 58%;
+    --risk-unknown: 215 14% 58%;
+
+    --surface-1: 218 44% 9%;
+    --surface-2: 217 38% 12%;
+    --surface-3: 216 33% 16%;
+
+    --font-heading: 'Space Grotesk', 'Noto Sans Tamil', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Inter', 'Noto Sans Tamil', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Space Grotesk', 'Noto Sans Tamil', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --chart-1: 187 92% 52%;
+    --chart-2: 152 62% 45%;
+    --chart-3: 27 92% 58%;
+    --chart-4: 0 78% 58%;
+    --chart-5: 265 70% 62%;
+
+    --sidebar-background: 218 44% 9%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 187 92% 52%;
+    --sidebar-primary-foreground: 218 62% 8%;
+    --sidebar-accent: 216 33% 16%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 215 32% 22%;
+    --sidebar-ring: 187 92% 52%;
+  }
+
+  .dark {
+    --background: 218 47% 7%;
+    --foreground: 210 40% 96%;
+    --card: 217 41% 10%;
+    --card-foreground: 210 40% 96%;
+    --popover: 218 44% 9%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 187 92% 52%;
+    --primary-foreground: 218 62% 8%;
+    --secondary: 217 33% 16%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 217 30% 15%;
+    --muted-foreground: 214 20% 70%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 218 62% 8%;
+    --destructive: 0 78% 56%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 32% 22%;
+    --input: 215 32% 20%;
+    --ring: 187 92% 52%;
+    --risk-low: 152 68% 44%;
+    --risk-caution: 45 93% 56%;
+    --risk-elevated: 27 92% 55%;
+    --risk-severe: 0 82% 58%;
+    --risk-unknown: 215 14% 58%;
+    --surface-1: 218 44% 9%;
+    --surface-2: 217 38% 12%;
+    --surface-3: 216 33% 16%;
+    --sidebar-background: 218 44% 9%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 187 92% 52%;
+    --sidebar-primary-foreground: 218 62% 8%;
+    --sidebar-accent: 216 33% 16%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 215 32% 22%;
+    --sidebar-ring: 187 92% 52%;
+  }
+
+  /* High-contrast mode: stronger ink, borders and surface separation. */
+  .hc {
+    --foreground: 0 0% 100%;
+    --muted-foreground: 210 25% 84%;
+    --border: 195 40% 45%;
+    --input: 195 40% 42%;
+    --card: 218 50% 12%;
+    --surface-1: 218 50% 11%;
+    --surface-2: 217 45% 15%;
+    --surface-3: 216 40% 20%;
+    --risk-unknown: 210 20% 74%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-feature-settings: "cv11", "ss01";
+    background-image:
+      radial-gradient(ellipse 70% 50% at 50% -5%, hsl(215 70% 20% / 0.5), transparent 60%),
+      radial-gradient(ellipse 50% 35% at 95% 100%, hsl(199 80% 30% / 0.1), transparent 60%),
+      radial-gradient(ellipse 40% 30% at 5% 80%, hsl(187 60% 25% / 0.08), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-heading tracking-tight;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--surface-1));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 999px;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-xl border border-border bg-card/70 backdrop-blur-sm;
+  }
+  .panel-pad {
+    @apply p-4 sm:p-5;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary px-2.5 py-0.5 text-[11px] font-medium;
+  }
+  .label-xs {
+    @apply text-[11px] uppercase tracking-[0.14em] text-muted-foreground;
+  }
+  .mono {
+    @apply font-mono tabular-nums;
+  }
+  .topo-lines {
+    background-image:
+      repeating-radial-gradient(circle at 25% 35%, transparent 0, transparent 48px, hsl(215 30% 30% / 0.05) 48px, hsl(215 30% 30% / 0.05) 49px),
+      repeating-radial-gradient(circle at 75% 65%, transparent 0, transparent 62px, hsl(199 40% 32% / 0.04) 62px, hsl(199 40% 32% / 0.04) 63px);
+  }
+  .grid-fade {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.35) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.35) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse at 50% 40%, black 35%, transparent 78%);
+  }
+}
+
+@keyframes ring-pulse {
+  0% { transform: scale(0.7); opacity: 0.9; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.ring-pulse {
+  animation: ring-pulse 2.4s ease-out infinite;
+}
+
+@keyframes sweep {
+  0% { transform: translateY(-6%); opacity: 0; }
+  40% { opacity: 0.85; }
+  100% { transform: translateY(106%); opacity: 0; }
+}
+.sweep {
+  animation: sweep 6s linear infinite;
+}
+
+@keyframes dash-run {
+  to { stroke-dashoffset: -240; }
+}
+.dash-run {
+  animation: dash-run 7s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring-pulse, .sweep, .dash-run {
+    animation: none;
+  }
+}

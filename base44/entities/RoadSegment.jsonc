@@ -1,0 +1,172 @@
+{
+  "name": "RoadSegment",
+  "type": "object",
+  "properties": {
+    "segment_id": {
+      "type": "string"
+    },
+    "road_name": {
+      "type": "string"
+    },
+    "road_class": {
+      "type": "string",
+      "enum": [
+        "national_highway",
+        "state_highway",
+        "urban_arterial",
+        "rural_road",
+        "coastal_road",
+        "bridge",
+        "other"
+      ],
+      "default": "state_highway"
+    },
+    "from_name": {
+      "type": "string"
+    },
+    "to_name": {
+      "type": "string"
+    },
+    "from_lat": {
+      "type": "number"
+    },
+    "from_lng": {
+      "type": "number"
+    },
+    "to_lat": {
+      "type": "number"
+    },
+    "to_lng": {
+      "type": "number"
+    },
+    "district": {
+      "type": "string"
+    },
+    "districts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "distance_km": {
+      "type": "number"
+    },
+    "speed_kmh": {
+      "type": "number"
+    },
+    "traffic_level": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "low",
+        "moderate",
+        "severe"
+      ],
+      "default": "unknown"
+    },
+    "traffic_is_disaster_related": {
+      "type": "boolean",
+      "default": false
+    },
+    "closure_status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "restricted",
+        "closed_confirmed",
+        "unknown"
+      ],
+      "default": "unknown"
+    },
+    "flood_exposure": {
+      "type": "number"
+    },
+    "stagnation_risk": {
+      "type": "number"
+    },
+    "surface_damage": {
+      "type": "string",
+      "enum": [
+        "none",
+        "minor",
+        "major",
+        "unknown"
+      ],
+      "default": "unknown"
+    },
+    "pedestrian_allowed": {
+      "type": "string",
+      "enum": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "default": "unknown"
+    },
+    "footpath": {
+      "type": "string",
+      "enum": [
+        "yes",
+        "no",
+        "partial",
+        "unknown"
+      ],
+      "default": "unknown"
+    },
+    "stairs": {
+      "type": "boolean",
+      "default": false
+    },
+    "accessibility_notes": {
+      "type": "string"
+    },
+    "data_confidence": {
+      "type": "number"
+    },
+    "source": {
+      "type": "string"
+    },
+    "last_verified": {
+      "type": "string"
+    },
+    "hazard_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "is_demonstration": {
+      "type": "boolean",
+      "default": true
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "from_name",
+    "to_name",
+    "from_lat",
+    "from_lng",
+    "to_lat",
+    "to_lng"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

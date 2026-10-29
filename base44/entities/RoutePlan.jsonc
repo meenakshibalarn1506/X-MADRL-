@@ -1,0 +1,110 @@
+{
+  "name": "RoutePlan",
+  "type": "object",
+  "properties": {
+    "origin": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "lat": {
+          "type": "number"
+        },
+        "lng": {
+          "type": "number"
+        }
+      }
+    },
+    "destination": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "lat": {
+          "type": "number"
+        },
+        "lng": {
+          "type": "number"
+        }
+      }
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "walking",
+        "cycling",
+        "driving"
+      ],
+      "default": "driving"
+    },
+    "preferences": {
+      "type": "object"
+    },
+    "destination_need": {
+      "type": "string"
+    },
+    "engine": {
+      "type": "string"
+    },
+    "engine_notice": {
+      "type": "string"
+    },
+    "google_configured": {
+      "type": "boolean",
+      "default": false
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "recommended_index": {
+      "type": "number"
+    },
+    "excluded": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "shortest_comparison": {
+      "type": "object"
+    },
+    "data_snapshot_at": {
+      "type": "string"
+    },
+    "is_demonstration": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "mode"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

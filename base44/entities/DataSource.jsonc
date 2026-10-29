@@ -1,0 +1,98 @@
+{
+  "name": "DataSource",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "basemap",
+        "routing",
+        "traffic",
+        "official_warning",
+        "road_network",
+        "flood_dataset",
+        "shelter_directory",
+        "community",
+        "positioning",
+        "model_pipeline",
+        "notifications"
+      ]
+    },
+    "access_method": {
+      "type": "string"
+    },
+    "access_status": {
+      "type": "string",
+      "enum": [
+        "connected",
+        "configured_not_tested",
+        "permission_required",
+        "not_connected"
+      ],
+      "default": "not_connected"
+    },
+    "refresh_interval_minutes": {
+      "type": "number"
+    },
+    "last_success_at": {
+      "type": "string"
+    },
+    "last_attempt_at": {
+      "type": "string"
+    },
+    "reliability": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        "unknown"
+      ],
+      "default": "unknown"
+    },
+    "is_official": {
+      "type": "boolean",
+      "default": false
+    },
+    "coverage": {
+      "type": "string"
+    },
+    "requires_secret": {
+      "type": "string"
+    },
+    "setup_hint": {
+      "type": "string"
+    },
+    "records_contributed": {
+      "type": "number"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "category"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

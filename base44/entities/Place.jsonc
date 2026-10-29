@@ -1,0 +1,82 @@
+{
+  "name": "Place",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "name_ta": {
+      "type": "string"
+    },
+    "place_type": {
+      "type": "string",
+      "enum": [
+        "district_hq",
+        "city",
+        "town",
+        "landmark",
+        "junction",
+        "coastal_post"
+      ],
+      "default": "town"
+    },
+    "district": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string",
+      "default": "Tamil Nadu"
+    },
+    "lat": {
+      "type": "number"
+    },
+    "lng": {
+      "type": "number"
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "search_terms": {
+      "type": "string"
+    },
+    "is_demonstration": {
+      "type": "boolean",
+      "default": true
+    },
+    "source": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "number"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "lat",
+    "lng"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
